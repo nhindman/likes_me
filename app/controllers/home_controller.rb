@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     
     if session[:token] 
       graph = Koala::Facebook::API.new(session[:token])
-      photos = graph.get_connection("me", "photos", {:limit => 10})
+      photos = graph.get_connection("me", "photos", {:limit => 20})
 
       photos_array = []
 
