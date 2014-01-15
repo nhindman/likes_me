@@ -26,7 +26,7 @@ class HomeController < ApplicationController
         photos_array << hash
       end
     end
-    @photos = photos_array.sort!{ |a,b| a[:total_likes] <=> b[:total_likes] }
+    @photos = photos_array.sort!{ |a,b| b[:total_likes] <=> a[:total_likes] }
     # binding.pry
   end
   
