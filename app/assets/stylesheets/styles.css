@@ -18,10 +18,19 @@ body {
   font-size: 5em;
   position: relative;
   float: left;
+  text-decoration: none;
 }
 
 img {
   height: 400px;
+}
+
+a{
+  color: white;
+}
+
+a:hover{
+  color:cyan;
 }
 
 .my_nav span {
@@ -30,3 +39,6 @@ img {
   padding-top: 3em;
 }
 
+.sign_in {
+  padding-left: 40px;
+}
