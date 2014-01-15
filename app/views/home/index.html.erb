@@ -1,13 +1,21 @@
-<h1>Show me my best photos</h1>
-
-
 <% if @render %>
+  <h1>Your best photos:</h1>
   <% @photos.each do |photo| %>
-  <div>
+ 
     <%if photo[:total_likes] > 0 %>
-      <img src="<%= photo[:url] %>">
-      <p>Like Count: <%= photo[:total_likes] %></p>
+      <div>
+        <img src="<%= photo[:url] %>">
+        <p>Like Count: <%= photo[:total_likes] %></p>
+      </div>
+    <% else %>
+      <div>
+        Sorry! Likes Me could not find any good photos of you. Maybe you should go work on your <a href="http://www.jokes.com/">jokes</a>.<br>
+        <img src="http://indiana.laxallstars.com/files/2011/06/sad-face-paper-bag.jpg" alt=":c">
+      </div>
     <% end %>
-  </div>
   <% end %>
+
+<% else %>
+  <h1>Log in to find your best photos!</h1>
+
 <% end %>
