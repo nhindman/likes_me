@@ -1,24 +1,38 @@
 <% if @render %>
-  <h1>Your best photos:</h1>
-  <% liked_photos = 0 %>
+
+<h1>Your best photos:</h1>
+<% liked_photos = 0 %>
+<form action = "/" method="post">
   <% @photos.each do |photo| %>
- 
-    <%if photo[:total_likes] > 0 %>
+  <div class="photo">
+    <div class="row">
+      <%if photo[:total_likes] > 0 %>
       <% liked_photos += 1 %>
-      <div>
-        <img src="<%= photo[:url] %>">
-        <p>Like Count: <%= photo[:total_likes] %></p>
+      <div class="col-md-4">
+        <img src="<%= photo[:url] %>"><br>
+        <input type="checkbox" name="photo" value="<%= photo[:id] %>">
+        <p><%= photo[:total_likes] %> Likes</p>
       </div>
-    <% end %>
-  <% end %>
-  <p><%= liked_photos%> photos found.</p>
-  <% if liked_photos == 0 %>      
-    <div>
-      Sorry! Likes Me could not find any good photos of you. Maybe you should go work on your <a href="http://www.jokes.com/">jokes</a>.<br>
-      <img src="http://indiana.laxallstars.com/files/2011/06/sad-face-paper-bag.jpg" alt=":c">
+      <% end %> 
+      <% end %>
     </div>
-  <% end %>
+  </div>
+  <button type="submit">Save Best Photos!</button>
+</form>
+
+<h4><%= liked_photos%> photos found.</h4>
+<% if liked_photos == 0 %>      
+<div>
+  Sorry! Likes Me could not find any good photos of you. Maybe you should go work on your <a href="http://www.jokes.com/">jokes</a>.<br>
+  <img src="http://indiana.laxallstars.com/files/2011/06/sad-face-paper-bag.jpg" alt=":c">
+</div>
+<% end %>
+
+
 
 <% else %>
   <h1><%= button_to "Find my best\nphotos!", user_omniauth_authorize_path(:facebook) %></h1>
 <% end %>
+
+
+
