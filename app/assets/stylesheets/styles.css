@@ -66,15 +66,20 @@ button, input[type="submit"] {
   height: auto;
 }
 
+#okcupid{
+  color: white;
+  background-color: #ff1e72;
+  text-shadow: 2px 2px #383B49;
+}
 
 input[type="checkbox"], input[type="radio"] {
   float: right;
   margin: -30px 18px 0 0;
   line-height: normal;
-  -ms-transform: scale(3);
-  -moz-transform: scale(3);
-  -webkit-transform: scale(3);
-  -o-transform: scale(3);
+  -ms-transform: scale(2);
+  -moz-transform: scale(2);
+  -webkit-transform: scale(2);
+  -o-transform: scale(2);
 }
 
 p{

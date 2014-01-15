@@ -6,12 +6,13 @@ class HomeController < ApplicationController
     
     if session[:token] 
       graph = Koala::Facebook::API.new(session[:token])
-      photos = graph.get_connection("me", "photos", {:limit => 20}) 
+
+      # binding.pry
+      photos = graph.get_connection("me", "photos", {:limit => 5}) 
 
       photos_array = []
-
-      photos.each do |photo|
-        hash = {id: photo["id"], url: photo["source"]}
+     
+      photos.each do |photo|   
         all_likes = graph.get_connection( photo["id"], "likes" )
         male_likes = 0
         female_likes = 0
@@ -23,9 +24,14 @@ class HomeController < ApplicationController
             female_likes += 1
           end
         end
-        hash[:male_likes] = male_likes
-        hash[:female_likes] = female_likes
-        hash[:total_likes] = male_likes + female_likes
+        hash = {
+          id: photo["id"],
+          url: photo["source"],
+          num_tags: graph.get_connection( photo["id"], "tags" ).count,
+          male_likes: male_likes,
+          female_likes: female_likes,
+          total_likes: male_likes + female_likes,
+          }
         photos_array << hash
       end
       @photos = photos_array.sort!{ |a,b| b[:total_likes] <=> a[:total_likes] }

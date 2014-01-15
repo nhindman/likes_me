@@ -6,7 +6,7 @@
   <% @photos.each do |photo| %>
   <div class="photo">
     <div class="row">
-      <%if photo[:total_likes] > 0 %>
+      <%if photo[:total_likes] > 0 && photo[:num_tags] <= 4 %>
       <% liked_photos += 1 %>
       <div class="col-md-4">
         <img src="<%= photo[:url] %>"><br>
@@ -18,9 +18,10 @@
     </div>
   </div>
   <button type="submit">Save Best Photos!</button>
+   <button id="okcupid">Export to OKCupid <sup>&beta;</sup></button>
 </form>
 
-<h4><%= liked_photos%> photos found.</h4>
+<h3><%= liked_photos%> photos found.</h3>
 <% if liked_photos == 0 %>      
 <div>
   Sorry! Likes Me could not find any good photos of you. Maybe you should go work on your <a href="http://www.jokes.com/">jokes</a>.<br>
