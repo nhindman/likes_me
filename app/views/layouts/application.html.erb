@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LikesMe</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+<div class="my_nav">
+<div id="logo">Likes Me</div>
+<span><% if user_signed_in? %>
+    <%= link_to "Log Out", destroy_user_session_path %>
+  <% else %>
+    <%= link_to "Sign In With Facebook", user_omniauth_authorize_path(:facebook) %>
+  <% end %>
+</span>
+</div>
+</nav>
+<div class="container">
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
+
+<%= yield %>
+</div>
+</body>
+</html>

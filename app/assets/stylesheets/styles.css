@@ -1,0 +1,28 @@
+body {
+  font-family: 'Quicksand';
+  /*background-color: #2855a2;*/
+}
+
+.my_nav {
+  max-width: 1000px;
+  width:90%;
+  margin: 0 auto;   
+  
+}
+.navbar{
+  background-color: #2855a2;
+}
+#logo {
+  font-family: 'Oleo Script Swash Caps', cursive;
+  /*color: #FF0808;*/
+  color:white;
+  font-size: 5em;
+  position:relative;
+  float:left;
+}
+
+.my_nav span {
+  position:relative;
+  float:right;
+  padding-top: 3em;
+}
