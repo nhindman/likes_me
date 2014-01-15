@@ -1,5 +1,6 @@
 body {
   font-family: 'Quicksand';
+  text-align: center;
 }
 
 .my_nav {
@@ -19,24 +20,39 @@ body {
   position: relative;
   float: left;
   text-decoration: none;
+  text-shadow: 5px 3px #5671C5;
+  padding-left: 5px;
 }
 
 img {
   height: 400px;
 }
 
-a{
+a {
   color: white;
 }
 
-a:hover{
-  color:cyan;
+a:hover {
+  text-decoration: none;
+  color: white;
+  text-shadow: 1px 2px #FF6262;
 }
 
 .my_nav span {
   position: relative;
   float: right;
   padding-top: 3em;
+}
+
+input[type="submit"] {
+  margin: 1em;
+  border: none;
+  padding: 1em;
+  font-size: 2em;
+  font-family: 'Quicksand';
+  font-weight: bold;
+  text-shadow: 2px 2px #9395A3;
+  background-color: #ddd;
 }
 
 .sign_in {
