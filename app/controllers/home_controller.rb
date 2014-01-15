@@ -1,6 +1,8 @@
 class HomeController < ApplicationController 
   
   def index
+
+    @render = false
     
     if session[:token] 
       graph = Koala::Facebook::API.new(session[:token])
@@ -27,6 +29,7 @@ class HomeController < ApplicationController
         photos_array << hash
       end
       @photos = photos_array.sort!{ |a,b| b[:total_likes] <=> a[:total_likes] }
+      @render = true
     end
   end
 

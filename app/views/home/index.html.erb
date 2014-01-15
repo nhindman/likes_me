@@ -1,8 +1,11 @@
-<h1>NEW PAGE</h1>
+<h1>Show me my best photos</h1>
 
-<% @photos.each do |photo| %>
-<div>
-  <img src="<%= photo[:url] %>">
-  <p>Like Count: <%= photo[:total_likes]%></p>
-</div>
+
+<% if @render == true %>
+  <% @photos.each do |photo| %>
+  <div>
+    <img src="<%= photo[:url] %>">
+    <p>Like Count: <%= photo[:total_likes]%></p>
+  </div>
+  <% end %>
 <% end %>
