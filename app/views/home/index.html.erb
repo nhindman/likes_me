@@ -1,7 +1,7 @@
 <h1>Show me my best photos</h1>
 
 
-<% if @render == true %>
+<% if @render %>
   <% @photos.each do |photo| %>
   <div>
     <%if photo[:total_likes] >= 0 %>
