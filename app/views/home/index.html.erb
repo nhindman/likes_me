@@ -4,7 +4,7 @@
 <% if @render %>
   <% @photos.each do |photo| %>
   <div>
-    <%if photo[:total_likes] >= 0 %>
+    <%if photo[:total_likes] > 0 %>
       <img src="<%= photo[:url] %>">
       <p>Like Count: <%= photo[:total_likes] %></p>
     <% end %>
