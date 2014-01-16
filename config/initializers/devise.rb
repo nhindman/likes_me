@@ -254,5 +254,4 @@ Devise.setup do |config|
 
   require "omniauth-facebook"
   config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], { :scope => "user_photos,friends_photos,offline_access,email" }
-  #take away hard coding after this works<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 end

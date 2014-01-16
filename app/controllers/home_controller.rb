@@ -6,10 +6,7 @@ class HomeController < ApplicationController
     
     if session[:token] 
       graph = Koala::Facebook::API.new(session[:token])
-
-      # binding.pry
-      photos = graph.get_connection("me", "photos", {:limit => 5}) 
-
+      photos = graph.get_connection("me", "photos", {:limit => 30}) 
       photos_array = []
      
       photos.each do |photo|   
@@ -34,9 +31,19 @@ class HomeController < ApplicationController
           }
         photos_array << hash
       end
-      @photos = photos_array.sort!{ |a,b| b[:total_likes] <=> a[:total_likes] }
-      @render = true
+      photos_array.sort!{ |a,b| b[:total_likes] <=> a[:total_likes] }
+
+      # Select best photos based on total user likes and maximum number of tags
+      @num_best_photos = 0
+      @photos = []
+      max_num_tags = 4
+      photos_array.each do |photo|
+        if photo[:total_likes] > 0 && photo[:num_tags] <= max_num_tags
+          @photos << photo
+          @num_best_photos += 1
+        end
+        @render = true
+      end
     end
   end
-
 end
