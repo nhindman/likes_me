@@ -27,6 +27,13 @@ gem 'capybara'
 gem 'omniauth-facebook'
 gem 'koala', '~> 1.6.0'
 
+group :test do
+  gem 'webmock'
+  gem 'vcr'
+end
+
+gem 'httparty'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

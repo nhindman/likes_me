@@ -24,11 +24,28 @@ body {
   padding-left: 5px;
 }
 
-@media (max-width: 800px) {
+/*@media (max-width: 800px) {
   #logo {
     display: block;
   }
 }
+*/
+
+/*.likes {
+padding: 0;
+background-color: white;
+}*/
+
+.likes {
+  maring-bottom:10px;
+  font-size: 1.3em;
+}
+
+.likes a:hover {
+  text-decoration: none;
+  text-shadow: 1px 2px #FF6262;
+}
+
 
 img {
   height: 400px;

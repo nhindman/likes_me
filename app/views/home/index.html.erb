@@ -1,6 +1,13 @@
 <% if @render %>
+
+
   <% if @photos.count > 0 %>
-    <h1>Your best photos:</h1>
+    <div>
+      <h1>Your best photos: </h1>
+      <div class="likes"><%= link_to "Likes", sort_by_path(:total_likes)%></div>
+      <div class="likes"><%= link_to "Likes by Females Only", sort_by_path(:female_likes)%></div>
+      <div class="likes"><%= link_to "Likes by Males Only", sort_by_path(:male_likes)%></div>
+    </div>
     <form action = "/" method="post">
     <div class="photo">
       <div class="row">
@@ -8,7 +15,13 @@
           <div class="col-md-4">
             <img src="<%= photo[:url] %>"><br>
             <input type="checkbox" name="photo" value="<%= photo[:id] %>">
-            <p><%= photo[:total_likes] %> Likes</p>
+            <p>
+              <% sort_by = @sort_by.to_sym %>
+              <%= photo[sort_by] %>
+              <%= "Male" if sort_by == :male_likes %> 
+              <%= "Female" if sort_by == :female_likes %>
+              Likes
+            </p>
           </div> 
       <% end %> 
       </div>
@@ -38,10 +51,10 @@
     </div>
   <% end %>
 
-
-
 <% else %>
+
     <h1><%= button_to "Find my best\nphotos!", user_omniauth_authorize_path(:facebook) %></h1>
+
 <% end %>
 
 
