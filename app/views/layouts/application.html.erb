@@ -15,10 +15,10 @@
 <div class="my_nav">
 <a href="/" id="logo">Likes Me</a>
   <span class="sign_in">
-    <%= link_to "Sign In to Likes Me", new_user_session_path %>
+    <% link_to "Sign In to Likes Me", new_user_session_path %>
   </span>
   <span class="sign_in">
-    <%= link_to "Sign Up to Likes Me",  new_user_registration_path %>
+    <% link_to "Sign Up to Likes Me",  new_user_registration_path %>
   </span>
   <span class="sign_in">
   <% if user_signed_in? %>

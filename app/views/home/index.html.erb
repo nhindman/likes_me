@@ -2,12 +2,35 @@
 
 
   <% if @photos.count > 0 %>
-    <div>
-      <h1>Your best photos: </h1>
-      <div class="likes"><%= link_to "Likes", sort_by_path(:total_likes)%></div>
-      <div class="likes"><%= link_to "Likes by Females Only", sort_by_path(:female_likes)%></div>
-      <div class="likes"><%= link_to "Likes by Males Only", sort_by_path(:male_likes)%></div>
+    <h1>Your best photos: </h1>
+    
+    <% sort_by = @sort_by.to_sym %>
+    <div class="row">
+      <ul class="gender-selector col-md-12">  
+        <div class="row">
+        <a href="<%=sort_by_path(:total_likes)%>">
+          <li class="likes col-xs-4 list-inline <%="selected" if  sort_by == :total_likes %>">
+            All Likes
+          </li>
+        </a>
+        <a href="<%=sort_by_path(:female_likes)%>">
+          <li class="likes col-xs-4 list-inline <%="selected" if  sort_by == :female_likes %>">
+            By Females
+          </li>
+        </a>
+        <a href="<%=sort_by_path(:male_likes)%>">
+          <li class="likes col-xs-4 list-inline <%="selected" if  sort_by == :male_likes %>">
+            By Males
+          </li>
+        </a>
+        </div>
+      </ul>
     </div>
+
+
+
+
+
     <form action = "/" method="post">
     <div class="photo">
       <div class="row">
@@ -15,26 +38,20 @@
           <div class="col-md-4">
             <img src="<%= photo[:url] %>"><br>
             <input type="checkbox" name="photo" value="<%= photo[:id] %>">
-            <p>
-              <% sort_by = @sort_by.to_sym %>
-              <%= photo[sort_by] %>
-              <%= "Male" if sort_by == :male_likes %> 
-              <%= "Female" if sort_by == :female_likes %>
-              Likes
-            </p>
+            <p><%= photo[sort_by] %> Likes</p>
           </div> 
       <% end %> 
       </div>
     </div>
 
       <div class="row">
-        <div class="col-md-4">
-          <button type="submit">Save Best Photos!</button>  
-        </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4"> -->
+          <!-- <button type="submit">Save Best Photos!</button>   -->
+        <!-- </div> -->
+        <div class="col-md-6">
           <button id="okcupid">Export to OKCupid<sup>&beta;</sup></button>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <button id="tinder">Export to tinder<sup>&beta;</sup></button>
         </div>
       </div>

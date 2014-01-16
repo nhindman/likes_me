@@ -24,28 +24,11 @@ body {
   padding-left: 5px;
 }
 
-/*@media (max-width: 800px) {
-  #logo {
-    display: block;
-  }
-}
-*/
-
-/*.likes {
-padding: 0;
-background-color: white;
-}*/
-
 .likes {
   maring-bottom:10px;
   font-size: 1.3em;
+  color:white;
 }
-
-.likes a:hover {
-  text-decoration: none;
-  text-shadow: 1px 2px #FF6262;
-}
-
 
 img {
   height: 400px;
@@ -90,6 +73,28 @@ input[type="checkbox"], input[type="radio"] {
   -moz-transform: scale(2);
   -webkit-transform: scale(2);
   -o-transform: scale(2);
+}
+
+.selected {
+  background-color: #2855a2;
+}
+
+li {
+  background-color: #aaaaaa;
+}
+
+li > a {
+  color: #2855a2;
+  font-size: 14px;
+  /*font-family: 'Helvetica';*/
+  text-transform: uppercase;
+  /*font-weight: bold;*/
+  padding: 5px 0;
+}
+
+li:hover{
+  background-color: #38374A;
+  text-shadow:none;
 }
 
 p {
