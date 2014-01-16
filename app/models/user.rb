@@ -30,15 +30,6 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-  def facebook
-    graph = Koala::Facebook::API.new(session[:token])
-    user = graph.get_object("me")
-    # current_user = Koala::Facebook::API.new(session[:token])
-    # binding.pry
-
-    # friends = graph.get_connections(user["id"], "friends")
-  end
 end
 
 
