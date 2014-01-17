@@ -1,5 +1,0 @@
-LIKES ME
-
-This app finds your best facebook photos.
-
-HEROKU: http://likes-me.herokuapp.com
