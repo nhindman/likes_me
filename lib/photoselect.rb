@@ -2,50 +2,47 @@ module PhotoSelect
 
   def self.fb_connect(token)
     graph = Koala::Facebook::API.new(token)
-    photos = graph.get_connection("me", "photos", {:limit => 5}) 
-  
+    photos = graph.get_connection("me", "photos", {:limit => 100}) 
+ 
     populate_likes_and_tags!(photos, graph)
  
-    return photos.map do |photo|
-      all_likes = photo["likes"]   
-      
+    return photos.map do |photo| 
       {
         id: photo["id"],
         url: photo["source"],
         num_tags: photo["tag_count"],
-        male_likes: all_likes.count   { |l| l[:gender] == "male" },
-        female_likes: all_likes.count { |l| l[:gender] == "female" },
-        total_likes: all_likes.length,
+        male_likes: photo["male_likes"],
+        female_likes: photo["female_likes"],
+        total_likes: photo["male_likes"] + photo["female_likes"],
       }
     end
   end
 
   def self.populate_likes_and_tags!(photos, graph)
-    photos.each do |photo|
-      photo["tag_count"] = graph.get_connection( photo["id"], "tags" ).count
-      photo["likes"] = graph.get_connection( photo["id"] , "likes" , {:limit => 25} )
-      photo["likes"].each do |like|
-        like[:gender] = graph.get_object(like["id"])["gender"]
-      end     
-    end
+      photos.each do |photo|
+        photo["tag_count"] = graph.get_connection( photo["id"], "tags" ).count
+        results = graph.batch do |batch_api|
+          batch_api.get_connections(photo["id"], "likes", {:limit => 100}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
+          batch_api.get_objects("{result=get-likes:$.data.*.id}")  
+        end
+        
+        male_likes = 0
+        female_likes = 0
+       # puts results[1]
+   
+        if results[1].class == Hash   
+          results[1].each do |k,v|
+            if v["gender"] == "male"
+              male_likes += 1
+            else
+              female_likes += 1
+            end
+          end
+        end
+        photo["male_likes"] = male_likes
+        photo["female_likes"] = female_likes
 
-
-
-#    photos.each do |photo|
-#       photo["tag_count"] = graph.get_connection( photo["id"], "tags" ).count
-#       photo["likes"] = graph.get_connection( photo["id"] , "likes" , {:limit => 25} )
-#       photo["likes"].each do |like|
-#         like[:gender] = graph.get_object(like["id"])["gender"]
-#       end     
-#     end
-
-# education = @graph.get_object("me") { |data| data['education'] }
-
-
-
-
-
-
+      end
   end
 
   def self.get_best_photos(photos_array, sort_by)
@@ -65,8 +62,9 @@ module PhotoSelect
   end
 
   def self.batch(token, sort_by)
-    photos_array = self.fb_connect(token)
-
+    
+     photos_array = self.fb_connect(token)
+  
     get_best_photos(photos_array, sort_by)
 
   end

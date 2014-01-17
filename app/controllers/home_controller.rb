@@ -7,10 +7,9 @@ class HomeController < ApplicationController
   def index
     @render = false
     if session[:token]
-    #  binding.pry
+     #binding.pry
       @sort_by = params[:sort_by] || :total_likes
       @photos = PhotoSelect::batch( session[:token], @sort_by )
-
       @render = true
     end
   end
