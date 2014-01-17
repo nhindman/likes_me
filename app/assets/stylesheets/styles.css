@@ -18,8 +18,17 @@ a:hover{
 }
 
 #find {
-  font-size: 6em;
-  width:600px;
+  font-size: 120px;
+  width: 600px;
+  font-weight: bold;
+  position: relative;
+  z-index: 100;
+  bottom: 46px;
+  line-height: 112px;
+  font-family: 'helvetica';
+  color: #8BAAE2;
+  text-shadow: -12px -12px rgba(0,0,0,0.5);
+  text-transform: uppercase;
 }
 
 #logo {
@@ -37,6 +46,14 @@ a:hover{
   margin-bottom:10px;
   font-size: 1.3em;
   color:white;
+}
+
+.shadow{
+  box-shadow: -26px -21px rgba(0,0,0,0.2);
+  position: absolute;
+  z-index: -100;
+  top: 319px;
+  right: 34%;
 }
 
 .find_button{

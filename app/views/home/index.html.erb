@@ -63,11 +63,8 @@
 
 <% else %>
 
-    <a type="button" class="btn btn-default find_button" href="<%= user_omniauth_authorize_path(:facebook) %>">
-      <div id="find">
-        Find my best<br>photos!
-      </div>
-    </a>
+    <a id="find" href="<%= user_omniauth_authorize_path(:facebook) %>">Find my best photos!</a>
+    <img class="shadow" src="images/male_example.png" alt="">
 
 <% end %>
 

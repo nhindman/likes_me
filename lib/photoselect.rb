@@ -4,6 +4,19 @@ module PhotoSelect
     graph = Koala::Facebook::API.new(token)
     photos = graph.get_connection("me", "photos", {:limit => 50}) 
  
+    # photo["tag_count"] = graph.get_connection( photo["id"], "tags" ).count
+    # results = graph.batch do |batch_api|
+    #   batch_api.get_connection("me", "photos", {:limit => 10} , :batch_args => {:name => "get-photos", :omit_response_on_success => false}) 
+    #   # get_connection( photo["id"], "tags" ).count
+
+    #   batch_api.get_connections("{result=get-photos:$.data.*.id}".each, "likes", :batch_args => {:name => "get-likes", :omit_response_on_success => false})
+    #   # batch_api.get_connections(photo["id"], "likes", {:limit => 25}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
+    #   batch_api.get_objects("{result=get-likes:$.data.*.id}")  
+    #   # batch_api.get_objects("{result=get-likes:$.data.*.id}")  
+    # end
+
+    #binding.pry
+
     populate_likes_and_tags!(photos, graph)
  
     return photos.map do |photo| 
