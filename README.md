@@ -16,8 +16,17 @@
   -tinder
   
   
-##VISIT AT
+##Visit at
 HEROKU: http://likes-me.herokuapp.com
 
+##Screenshots
 
-##TESTING
+
+![Example1](/tree/master/public/images/male_example.png)
+
+##Testing!
+[Testing coverage](/tree/master/public/images/test_coverage.png)
+
+
+
+
