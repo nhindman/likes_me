@@ -40,9 +40,9 @@ HEROKU: http://likes-me.herokuapp.com
 ![Testing coverage](public/images/test_coverage.png)
 
 ##Implementation
-Incorporate Facebook's Graph API using the *Koala* gem.
+Incorporates Facebook's Graph API using the *Koala* gem.
 
-Batch facebook queries: improved efficiency!
+Uses batched facebook queries to improved efficiency, and reduce API calls!
 ```ruby
 results = graph.batch do |batch_api|
   batch_api.get_connections(photo["id"], "likes", {:limit => 25}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
