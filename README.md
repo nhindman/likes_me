@@ -1,22 +1,22 @@
 #LIKES ME
 
-##Finds your best facebook photos!
+##Find your best facebook photos!
 
 * Best photos selected based on 
   * number of likes
     * 1 min
   * number of other people in the photo
     * 4 max
-* Photos can be sort by
+* Photos can be sorted by
   * total likes
   * likes by females only
   * likes by males only
-* Photos can be export to dating websites - not implemented yet
+* Photos can be exported to dating websites - not implemented yet
   * OKCupid
   * tinder
   
   
-##Visit at
+##Visit
 HEROKU: http://likes-me.herokuapp.com
 
 ##Screenshots
@@ -42,7 +42,8 @@ HEROKU: http://likes-me.herokuapp.com
 ##Implementation
 Incorporates Facebook's Graph API using the *Koala* gem.
 
-Uses batched facebook queries to improved efficiency, and reduce API calls!
+Uses batched facebook queries to improve efficiency and reduce API calls!
+See sample below:
 ```ruby
 results = graph.batch do |batch_api|
   batch_api.get_connections(photo["id"], "likes", {:limit => 25}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
@@ -50,5 +51,7 @@ results = graph.batch do |batch_api|
 end
 ````
 
+
+###Thanks for visiting!!
 
 
