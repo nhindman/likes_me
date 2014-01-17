@@ -21,12 +21,33 @@ HEROKU: http://likes-me.herokuapp.com
 
 ##Screenshots
 
+![Example1](public/images/female_example.png)
+1. Organize photos by popularity (All Likes, By Females, By Males)
 
-![Example1](/tree/master/public/images/male_example.png)
+![Example1](public/images/male_example2.png)
+2. Another example. Find your most liked images!
+
+![Example1](public/images/male_example.png)
+3. 
+![Example1](public/images/female_example2.png)
+4. Conveniently export to dating websites - not yet implememted
+
+![Example1](public/images/male_example3.png)
+5. *OKCupid* and *tinder* compatible - not yet implemented
 
 ##Testing!
-[Testing coverage](/tree/master/public/images/test_coverage.png)
+![Testing coverage](public/images/test_coverage.png)
 
+##Implementation
+Incorporate Facebook's Graph API using the *Koala* gem.
+
+Nested of facebook query (improves efficiency by chaining requests).
+```ruby
+results = graph.batch do |batch_api|
+  batch_api.get_connections(photo["id"], "likes", {:limit => 25}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
+  batch_api.get_objects("{result=get-likes:$.data.*.id}")  
+end
+````
 
 
 
