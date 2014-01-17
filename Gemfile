@@ -31,6 +31,7 @@ gem 'koala', '~> 1.6.0'
 group :test do
   gem 'webmock'
   gem 'vcr'
+  gem 'simplecov', :require => false
 end
 
 gem 'httparty'

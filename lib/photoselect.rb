@@ -2,7 +2,7 @@ module PhotoSelect
 
   def self.fb_connect(token)
     graph = Koala::Facebook::API.new(token)
-    photos = graph.get_connection("me", "photos", {:limit => 50}) 
+    photos = graph.get_connection("me", "photos", {:limit => 70}) 
  
     populate_likes_and_tags!(photos, graph)
  
@@ -22,7 +22,7 @@ module PhotoSelect
       photos.each do |photo|
         photo["tag_count"] = graph.get_connection( photo["id"], "tags" ).count
         results = graph.batch do |batch_api|
-          batch_api.get_connections(photo["id"], "likes", {:limit => 25}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
+          batch_api.get_connections(photo["id"], "likes", {:limit => 50}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
           batch_api.get_objects("{result=get-likes:$.data.*.id}")  
         end
         
@@ -45,7 +45,7 @@ module PhotoSelect
   def self.get_best_photos(photos_array, sort_by)
     sort_by = sort_by.to_sym
     photos_array.sort!{ |a,b| b[sort_by] <=> a[sort_by] }
-    max_num_tags = 4
+    max_num_tags = 3
     min_num_likes = 1
     best_photos = []
     if photos_array
@@ -59,11 +59,8 @@ module PhotoSelect
   end
 
   def self.batch(token, sort_by)
-    
-     photos_array = self.fb_connect(token)
-  
+    photos_array = self.fb_connect(token)
     get_best_photos(photos_array, sort_by)
-
   end
 
 end  

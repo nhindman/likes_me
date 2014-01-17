@@ -22,9 +22,6 @@ a:hover{
   width:600px;
 }
 
-
-
-
 #logo {
   font-family: 'Oleo Script Swash Caps', cursive;
   color:white;
@@ -43,14 +40,10 @@ a:hover{
 }
 
 .find_button{
+  margin-top: 40px;
   border-radius: 1em;
   background-color: #ddd;
-}
-
-.shadow {
-  -moz-box-shadow: 0 0 30px 5px #999;
-  -webkit-box-shadow: 0 0 30px 5px #999;
-  box-shadow: 0 0 30px 5px #999;
+  font-weight:bold;
 }
 
 img {
@@ -109,9 +102,7 @@ li {
 li > a {
   color: #2855a2;
   font-size: 14px;
-  /*font-family: 'Helvetica';*/
   text-transform: uppercase;
-  /*font-weight: bold;*/
   padding: 5px 0;
 }
 
