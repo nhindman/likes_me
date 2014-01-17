@@ -21,14 +21,15 @@ HEROKU: http://likes-me.herokuapp.com
 
 ##Screenshots
 
-![Example1](public/images/female_example.png)
+![Example1](public/images/male_example.png)
 1. Organize photos by popularity (All Likes, By Females, By Males)
 
-![Example1](public/images/male_example2.png)
+![Example1](public/images/female_example.png)
 2. Another example. Find your most liked images!
 
-![Example1](public/images/male_example.png)
-3. 
+![Example1](public/images/male_example2.png)
+3. Even more fun than facebook.
+
 ![Example1](public/images/female_example2.png)
 4. Conveniently export to dating websites - not yet implememted
 
