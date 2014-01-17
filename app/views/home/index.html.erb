@@ -70,7 +70,11 @@
 
 <% else %>
 
-    <h1><%= button_to "Find my best\nphotos!", user_omniauth_authorize_path(:facebook) %></h1>
+    <a type="button" class="btn btn-default find_button shadow" href="<%= user_omniauth_authorize_path(:facebook) %>">
+      <div id="find">
+        Find my best<br>photos!
+      </div>
+    </a>
 
 <% end %>
 

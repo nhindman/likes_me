@@ -2,7 +2,7 @@ module PhotoSelect
 
   def self.fb_connect(token)
     graph = Koala::Facebook::API.new(token)
-    photos = graph.get_connection("me", "photos", {:limit => 100}) 
+    photos = graph.get_connection("me", "photos", {:limit => 50}) 
  
     populate_likes_and_tags!(photos, graph)
  
@@ -22,14 +22,12 @@ module PhotoSelect
       photos.each do |photo|
         photo["tag_count"] = graph.get_connection( photo["id"], "tags" ).count
         results = graph.batch do |batch_api|
-          batch_api.get_connections(photo["id"], "likes", {:limit => 100}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
+          batch_api.get_connections(photo["id"], "likes", {:limit => 25}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
           batch_api.get_objects("{result=get-likes:$.data.*.id}")  
         end
         
         male_likes = 0
         female_likes = 0
-       # puts results[1]
-   
         if results[1].class == Hash   
           results[1].each do |k,v|
             if v["gender"] == "male"
@@ -41,7 +39,6 @@ module PhotoSelect
         end
         photo["male_likes"] = male_likes
         photo["female_likes"] = female_likes
-
       end
   end
 

@@ -13,6 +13,18 @@ body {
   background-color: #2855a2;
 }
 
+a:hover{
+  text-decoration: none;
+}
+
+#find {
+  font-size: 6em;
+  width:600px;
+}
+
+
+
+
 #logo {
   font-family: 'Oleo Script Swash Caps', cursive;
   color:white;
@@ -25,9 +37,20 @@ body {
 }
 
 .likes {
-  maring-bottom:10px;
+  margin-bottom:10px;
   font-size: 1.3em;
   color:white;
+}
+
+.find_button{
+  border-radius: 1em;
+  background-color: #ddd;
+}
+
+.shadow {
+  -moz-box-shadow: 0 0 30px 5px #999;
+  -webkit-box-shadow: 0 0 30px 5px #999;
+  box-shadow: 0 0 30px 5px #999;
 }
 
 img {
