@@ -6,7 +6,7 @@
   * number of likes
     * 1 min
   * number of other people in the photo
-    *4 max
+    * 4 max
 * Photos can be sort by
   * total likes
   * likes by females only
