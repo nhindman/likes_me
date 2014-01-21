@@ -1,6 +1,11 @@
-body {
+html, body, .container {
   font-family: 'Quicksand';
   text-align: center;
+  height: 100%;
+}
+
+.container { 
+  position: relative;
 }
 
 .my_nav {
@@ -21,14 +26,13 @@ a:hover{
 #find {
   font-size: 120px;
   width: 600px;
-  font-weight: bold;
+  top: -27px;
+  font-family: 'Open Sans';
   position: relative;
   z-index: 100;
-  bottom: 46px;
   line-height: 112px;
-  font-family: 'helvetica';
   color: #8BAAE2;
-  text-shadow: -12px -12px rgba(0,0,0,0.5);
+  text-shadow: -9px -9px 11px rgba(0,0,0,0.55);
   text-transform: uppercase;
 }
 
@@ -49,23 +53,22 @@ a:hover{
   color:white;
 }
 
-.shadow{
-  box-shadow: -26px -21px rgba(0,0,0,0.2);
-  position: absolute;
+.shadow {
   z-index: -100;
-  top: 333px;
-  right: 34%;
+  box-shadow: -17px -18px 11px rgba(0,0,0,0.45)
 }
 
-.find_button{
+.example {
+  position: relative;
+  bottom: 60px;
+  height: 525px;
+}
+
+.find_button {
   margin-top: 40px;
   border-radius: 1em;
   background-color: #ddd;
   font-weight:bold;
-}
-
-img {
-  height: 400px;
 }
 
 .my_nav a {

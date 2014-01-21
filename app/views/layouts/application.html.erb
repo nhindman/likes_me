@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:800' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
 
 </head>
@@ -25,7 +26,7 @@
       <%= link_to "Log Out", destroy_user_session_path %>
     </span>
     <span class="sign_in">
-      You are logged in as <%= @username %>
+      You are logged in as <%= current_user.name %>
     </span>
   <% else %>
     <span class="sign_in">

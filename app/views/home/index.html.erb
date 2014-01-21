@@ -62,10 +62,13 @@
   <% end %>
 
 <% else %>
+      <a id="find" href="<%= user_omniauth_authorize_path(:facebook) %>">Find my best photos!</a>
 
-    <a id="find" href="<%= user_omniauth_authorize_path(:facebook) %>">Find my best photos!</a>
-    <img class="shadow" src="images/male_example.png" alt="">
-
+    <div class ="row">
+      <div class="col-md-10 col-md-offset-1">
+      <img class="shadow example" src="images/male_example.png" alt="">
+    </div>
+    </div>
 <% end %>
 
 
