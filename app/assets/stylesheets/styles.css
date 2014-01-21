@@ -9,6 +9,7 @@ body {
   margin: 0 auto;   
   
 }
+
 .navbar {
   background-color: #2855a2;
 }
@@ -52,7 +53,7 @@ a:hover{
   box-shadow: -26px -21px rgba(0,0,0,0.2);
   position: absolute;
   z-index: -100;
-  top: 319px;
+  top: 333px;
   right: 34%;
 }
 
@@ -135,8 +136,10 @@ p {
 .sad {
   margin-bottom: 50px;
 }
+
 .sign_in {
   padding-left: 40px;
+  color: white;
 }
 
 #okcupid{

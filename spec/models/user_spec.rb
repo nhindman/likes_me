@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe HomeController do 
+describe User do 
   describe "something" do
-    
   end
-end
 
+
+end

@@ -20,13 +20,18 @@
   <span class="sign_in">
     <% link_to "Sign Up to Likes Me",  new_user_registration_path %>
   </span>
-  <span class="sign_in">
   <% if user_signed_in? %>
-    <%= link_to "Log Out", destroy_user_session_path %>
+    <span class="sign_in">
+      <%= link_to "Log Out", destroy_user_session_path %>
+    </span>
+    <span class="sign_in">
+      You are logged in as <%= @username %>
+    </span>
   <% else %>
-    <%= link_to "Sign In With Facebook", user_omniauth_authorize_path(:facebook) %>
+    <span class="sign_in">
+      <%= link_to "Sign In With Facebook", user_omniauth_authorize_path(:facebook) %>
+    </span>
   <% end %>
-  </span>
 </div>
 </nav>
 <div class="container">
@@ -34,9 +39,8 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-
-
 <%= yield %>
+
 </div>
 </body>
 </html>

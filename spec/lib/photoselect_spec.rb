@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Home do 
+describe PhotoSelect do 
   describe "something" do
-    
+
   end
 end
