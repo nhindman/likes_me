@@ -5,8 +5,8 @@
 * Best photos selected based on 
   * number of likes
     * 1 min
-  * number of other people in the photo
-    * 4 max
+  * number of people tagged in the photo
+    * 3 max
 * Photos can be sorted by
   * total likes
   * likes by females only
@@ -34,13 +34,12 @@ HEROKU: http://likes-me.herokuapp.com
 ![Testing coverage](public/images/test_coverage.png)
 
 ##Implementation
-Incorporates Facebook's Graph API using the [*Koala gem*](http://rubygems.org/gems/koala).
+Incorporates Facebook's Graph API using the [Koala gem](http://rubygems.org/gems/koala). Uses batched facebook queries to improve efficiency and reduce API calls.
 
-Uses batched facebook queries to improve efficiency and reduce API calls.
-In the example below, in order to organize "Likes" by gender, data related to each user that has liked an individual photo is retrieved in the same API call as each photo's list of associated "Likes". 
+In the example below, in order to organize "Likes" by gender, data related to each user that has "Liked" an individual photo is retrieved in the same API call as the list of each photo's associated "Likes". 
 
 ```ruby
-def self.populate_likes_and_tags!(photos, graph)
+  def self.populate_likes_and_tags!(photos, graph)
     photos.each do |photo|
       photo["tag_count"] = graph.get_connection( photo["id"], "tags" ).count
 
