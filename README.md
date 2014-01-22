@@ -30,26 +30,46 @@ HEROKU: http://likes-me.herokuapp.com
 ![Example1](public/images/male_example2.png)
 3. Even more fun than facebook.
 
-![Example1](public/images/female_example2.png)
-4. Conveniently export to dating websites - not yet implememted
-
 ![Example1](public/images/male_example3.png)
-5. *OKCupid* and *tinder* compatible - not yet implemented
+4. Export directly to *OkCupid* and *tinder* - not yet implemented
 
 ##Testing!
 ![Testing coverage](public/images/test_coverage.png)
 
 ##Implementation
-Incorporates Facebook's Graph API using the *Koala* gem.
+Incorporates Facebook's Graph API using the [*Koala gem*](http://rubygems.org/gems/koala).
 
-Uses batched facebook queries to improve efficiency and reduce API calls!
-See sample below:
+Uses batched facebook queries to improve efficiency and reduce API calls.
+In the example below, in order to organize "Likes" by gender, data related to each user that has liked an individual photo is retrieved in the same API call as each photo's list of associated "Likes". 
+
 ```ruby
-results = graph.batch do |batch_api|
-  batch_api.get_connections(photo["id"], "likes", {:limit => 25}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
-  batch_api.get_objects("{result=get-likes:$.data.*.id}")  
-end
-````
+def self.populate_likes_and_tags!(photos, graph)
+    photos.each do |photo|
+      photo["tag_count"] = graph.get_connection( photo["id"], "tags" ).count
+
+      results = graph.batch do |batch_api|
+        batch_api.get_connections(photo["id"], "likes", {:limit => 25}, :batch_args => {:name => "get-likes", :omit_response_on_success => false})
+        batch_api.get_objects("{result=get-likes:$.data.*.id}")  
+      end
+
+      male_likes = 0
+      female_likes = 0
+      if results[1].class == Hash   
+        results[1].each do |k,v|
+          if v["gender"] == "male"
+            male_likes += 1
+          else
+            female_likes += 1
+          end
+        end
+      end
+
+      photo["male_likes"] = male_likes
+      photo["female_likes"] = female_likes
+    end
+  end
+
+```
 
 
 ###Thanks for visiting!!
