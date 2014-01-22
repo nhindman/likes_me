@@ -27,11 +27,8 @@ HEROKU: http://likes-me.herokuapp.com
 ![Example1](public/images/female_example.png)
 2. Another example. Find your most liked images!
 
-![Example1](public/images/male_example2.png)
-3. Even more fun than facebook.
-
-![Example1](public/images/male_example3.png)
-4. Export directly to *OkCupid* and *tinder* - not yet implemented
+![Example1](public/images/female_example2.png)
+3. Export directly to *OkCupid* and *tinder* - not yet implemented
 
 ##Testing!
 ![Testing coverage](public/images/test_coverage.png)
